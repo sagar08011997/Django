@@ -1,0 +1,98 @@
+{% extends "baseFiles/portfolioBase.html" %}
+
+{% block title %} <title>Portfolio Website </title> {% endblock %}
+
+{% block body %}
+{% load static %}
+<div class="container mt-3">
+    <h3 style="">Work Experience</h3>
+    <div class="row mt-2">
+        <div class="col-md-10">
+
+            {% if params %}
+            {% for all in params %}
+                <div class="card mt-3 shadow">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Company Name</label>
+                                <h4>{{all.name}}</h4>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Start Date</label>
+                                <h4>{{all.start_date}}</h4>
+                            </div>
+                            <div class="col-md-6">
+                                <label>End Date</label>
+                                <h4>{{all.end_date}}</h4>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Description</label>
+                                <h4>{{all.desc}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% else %}
+                <div class="card">
+                    <div class="card-body">
+                        No Experience added yet
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <button class="btn btn-dark" data-bs-target="#staticBackdrop" data-bs-toggle="modal" type="button">
+                Add Work Experience
+            </button>
+        </div>
+    </div>
+
+    <div aria-hidden="true" aria-labelledby="staticBackdropLabel" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"
+         id="staticBackdrop" tabindex="-1">
+        <form action="" method="post"> {% csrf_token %}
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Add Work Experience</h5>
+                        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="mb-3">
+                                <label class="form-label" for="exampleFormControlInput1">Company Name<span style="color:red">*</span></label>
+                                <input class="form-control" name="company_name" placeholder="Name" required type="text">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="exampleFormControlInput1">Start Date<span style="color:red">*</span></label>
+                                <input class="form-control" name="start_date" required type="date">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="exampleFormControlInput1">End Date</label>
+                                <input class="form-control" name="end_date" type="date">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="exampleFormControlTextarea1">Example textarea</label>
+                                <textarea class="form-control" name="desc" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-light" data-bs-dismiss="modal" type="button">Close</button>
+                        <button class="btn btn-dark" type="submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+{% endblock %}
+{% block js %}
+    <script type="text/javascript">
+
+    </script>
+{% endblock%}

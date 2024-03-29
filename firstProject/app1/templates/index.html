@@ -1,0 +1,22 @@
+{% extends "baseFiles/portfolioBase.html" %}
+
+{% block title %} <title>Portfolio Website </title> {% endblock %}
+
+{% block body %}
+{% load static %}
+<div class="container mt-3">
+    <h1 style="">First Portfolio website</h1>
+    <div class="row mt-3">
+        <div class="col-md-4">
+            <img src='{% static "app1/profile_image.jpg" %}' alt="my image" height="300" width="300">
+        </div>
+        <div class="col-md-6 mt-4">
+            Senior-level Software and Application Developer passionate about creating products for company strong work ethics and
+            dedicated to quality assurance Adapt at working with teams or independently in fast-paced setting!
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

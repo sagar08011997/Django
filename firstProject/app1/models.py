@@ -1,0 +1,24 @@
+from django.db import models
+import datetime
+
+class Person(models.Model):
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    age = models.IntegerField()
+    address = models.CharField(max_length=30)
+    dob = models.DateField(default= datetime.datetime.utcnow())
+    department = models.CharField(max_length=30)
+    phoneNumber1 = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.first_name
+
+class CompanyDetails(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=50)
+    start_date = models.DateField()
+    end_date = models.DateField(default=None, null=True, blank=True)
+    desc = models.CharField(max_length=300)
+
+    def __str__(self):
+        return self.name
